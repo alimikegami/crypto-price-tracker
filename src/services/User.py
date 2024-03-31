@@ -35,6 +35,6 @@ class UserService:
         hashed_password = user[2]
         if not verifyPassword(data.password, hashed_password):
             raise HTTPException(status_code=401, detail="Email or password is incorrect")
-        token = createAccessToken({"user_id": user[0]}, 6, self.environmentVariables.jwt_secret_key, "HS256")
+        token = createAccessToken({"user_id": user[0]}, 30, self.environmentVariables.jwt_secret_key, "HS256")
 
         return token
